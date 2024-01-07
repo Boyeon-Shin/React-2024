@@ -63,12 +63,12 @@ function Body() {
                 </tr>
                 <tr>
                     <td>Email:</td>
-                   <td><input type= "email"  name ="email" ref={textRef} value={state.email} onChange={handleOnChange}/></td>
+                   <td><input type= "email"  name ="email" ref={textRef} value={state.email}  placeholder="email" onChange={handleOnChange}/></td>
                 </tr>
 
                 <tr>
                     <td>Password:</td>
-                    <td><input type = "password" name = "password" ref={text2Ref} value={state.password} placeholder="6자리 이상(특수문자 포함)" onChange={handleOnChange}/></td>
+                    <td><input type = "password" name = "password" ref={text2Ref} value={state.password} placeholder="6자리 이상" onChange={handleOnChange}/></td>
                 </tr>
 
                 <tr>
