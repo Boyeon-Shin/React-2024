@@ -29,21 +29,19 @@ function App() {
 
     const handleSetGame = () => {
         let count = 0;
-        let first = number / 10;
+        let  first =  Math.floor(number / 10);
         let remainder = number % 10;
 
-        if (first === 3 || 6 || 9) {
+        if (first === 3 || first === 6 || first === 9) {
             count++;
         }
-        if (remainder === 3 || 6 || 9) {
+        if (remainder === 3 || remainder === 6 || remainder === 9) {
             count++;
-        } else {
-            return;
         }
 
         switch (count) {
             case 1:
-                alert("짝");
+                alert("짝")
                 break;
             case 2:
                 alert("짝짝");
