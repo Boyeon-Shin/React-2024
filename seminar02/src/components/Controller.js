@@ -1,4 +1,4 @@
-const Controller = ({handleSetNumber, handleSetGame}) => {
+const Controller = ({handleSetNumber}) => {
 
     return (
         <button onClick = {() => {handleSetNumber(1)}}>+</button>
