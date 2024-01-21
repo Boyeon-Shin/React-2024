@@ -1,10 +1,10 @@
 import "./TodoList.css";
 import TodoItem from "./TodoItem";
 import {useContext, useMemo, useState} from "react";
-import {TodoContext} from "../App";
+import {TodoStateContext} from "../App";
 
 const TodoList = () => {
-    const {todo} = useContext(TodoContext);
+    const todo = useContext(TodoStateContext);
     const [search, setSearch] = useState("");
 
     const onChangeSearch = (e) => {
@@ -16,6 +16,7 @@ const TodoList = () => {
             : todo.filter((it) =>
                 it.content.toLowerCase().includes(search.toLowerCase()));
     };
+
     const analyzeTodo = useMemo(() => {
         console.log("analyzeTodo 함수 호출");
         const totalCount = todo.length;
@@ -30,7 +31,6 @@ const TodoList = () => {
     }, [todo]);
 
     const {totalCount, doneCount, notDoneCount} = analyzeTodo;
-
 
     return (
         <div className="TodoList">
@@ -48,7 +48,6 @@ const TodoList = () => {
 
             <div className="list_wrapper">
                 {getSearchResult().map((it) => (
-                    // <TodoItem key={it.id} {...it} onUpdate={onUpdate} onDelete={onDelete}/>
                     <TodoItem key={it.id} {...it} />
                 ))}
             </div>
@@ -59,4 +58,6 @@ const TodoList = () => {
 TodoList.defaultProps = {
     todo: [],
 };
+
+
 export default TodoList;
