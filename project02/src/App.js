@@ -2,10 +2,11 @@ import './App.css';
 import Header from "./components/Header";
 import TodoEditor from "./components/TodoEditor";
 import TodoList from "./components/TodoList";
-import {useReducer, useRef} from "react";
+import React, {useCallback, useReducer, useRef} from "react";
 // import TestComp from "./components/TestComp";
 // import {tab} from "@testing-library/user-event/dist/tab";
 
+// const TodoContext = React.createContext();
 
 function reducer(state, action) {
     switch (action.type) {
@@ -50,7 +51,7 @@ function App() {
     const [todo, dispatch] = useReducer(reducer, mockTodo);
     const idRef = useRef(3);
 
-    const onCreate = (content) => {
+    const onCreate = useCallback((content) => {
         dispatch({
             type: "CREATE",
             newItem: {
@@ -61,23 +62,23 @@ function App() {
             },
         });
         idRef.current += 1;
-    };
+    },[]);
 
 
 
-    const onUpdate = (targetId) => {
+    const onUpdate = useCallback((targetId) => {
         dispatch({
             type: "UPDATE",
             targetId,
         });
-    };
+    },[]);
 
-    const onDelete =(targetId) => {
+    const onDelete = useCallback((targetId) => {
         dispatch({
             type: "DELETE",
             targetId,
         });
-    };
+    },[]);
 
     // const onCreate = (content) => {
     //     const newItem = {
@@ -105,11 +106,15 @@ function App() {
     <div className="App">
         {/*<TestComp />*/}
       <Header />
-      <TodoEditor onCreate = {onCreate} />
-      <TodoList todo={todo} onUpdate={onUpdate} onDelete={onDelete} />
-
+    <TodoContext.Provider value={{todo, onCreate, onUpdate, onDelete}}>
+      {/*<TodoEditor onCreate = {onCreate} />*/}
+      {/*<TodoList todo={todo} onUpdate={onUpdate} onDelete={onDelete} />*/}
+        <TodoEditor />
+        <TodoList />
+    </TodoContext.Provider>
     </div>
   );
 }
 
+export const TodoContext = React.createContext();
 export default App;
