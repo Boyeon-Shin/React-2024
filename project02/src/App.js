@@ -3,10 +3,10 @@ import Header from "./components/Header";
 import TodoEditor from "./components/TodoEditor";
 import TodoList from "./components/TodoList";
 import React, {useCallback, useReducer, useRef} from "react";
-// import TestComp from "./components/TestComp";
-// import {tab} from "@testing-library/user-event/dist/tab";
 
-// const TodoContext = React.createContext();
+export const TodoStateContext = React.createContext();
+export const TodoDispatchContext = React.createContext();
+
 
 function reducer(state, action) {
     switch (action.type) {
@@ -15,10 +15,10 @@ function reducer(state, action) {
         }
         case "UPDATE": {
             return state.map((it) =>
-            it.id === action.targetId ? { ...it, isDone: !it.isDone,} : it);
+                it.id === action.targetId ? {...it, isDone: !it.isDone,} : it);
         }
         case "DELETE": {
-            return state.filter((it)=> it.id !== action.targetId );
+            return state.filter((it) => it.id !== action.targetId);
         }
         default:
             return state;
@@ -62,8 +62,7 @@ function App() {
             },
         });
         idRef.current += 1;
-    },[]);
-
+    }, []);
 
 
     const onUpdate = useCallback((targetId) => {
@@ -71,50 +70,27 @@ function App() {
             type: "UPDATE",
             targetId,
         });
-    },[]);
+    }, []);
 
     const onDelete = useCallback((targetId) => {
         dispatch({
             type: "DELETE",
             targetId,
         });
-    },[]);
+    }, []);
 
-    // const onCreate = (content) => {
-    //     const newItem = {
-    //         id: 0,
-    //         content,
-    //         isDone: false,
-    //         createDate: new Date().getTime(),
-    //     };
-    //     setTodo([newItem, ...todo]);
-    //     idRef.current += 1;
-    // };
-    // const onUpdate = (targetId) => {
-    //     setTodo(
-    //         todo.map((it) =>
-    //             it.id === targetId ? {...it, isDone: !it.isDone } :it
-    //         )
-    //     );
-    // };
-    //
-    // const onDelete = (targetId) => {
-    //     setTodo(todo.filter((it) => it.id !== targetId))
-    // };
 
-  return (
-    <div className="App">
-        {/*<TestComp />*/}
-      <Header />
-    <TodoContext.Provider value={{todo, onCreate, onUpdate, onDelete}}>
-      {/*<TodoEditor onCreate = {onCreate} />*/}
-      {/*<TodoList todo={todo} onUpdate={onUpdate} onDelete={onDelete} />*/}
-        <TodoEditor />
-        <TodoList />
-    </TodoContext.Provider>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Header/>
+            <TodoStateContext.Provider value={todo}>
+                <TodoDispatchContext.Provider value={{onCreate, onUpdate, onDelete}}>
+                    <TodoEditor/>
+                    <TodoList/>
+                </TodoDispatchContext.Provider>
+            </TodoStateContext.Provider>
+        </div>
+    );
 }
 
-export const TodoContext = React.createContext();
 export default App;
