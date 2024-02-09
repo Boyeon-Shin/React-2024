@@ -1,6 +1,6 @@
 import './App.css';
 import Edit from "./pages/Edit";
-import {createBrowserRouter, Link, Route, RouterProvider, Routes} from "react-router-dom";
+import {createBrowserRouter , RouterProvider} from "react-router-dom";
 import Home from "./pages/Home";
 import New from "./pages/New";
 import Diary from "./pages/Diary";
@@ -45,10 +45,10 @@ function App() {
       //     <Link to={"/edit"}>Edit</Link>
       //   </div>
 
-          <RouterProvider router={router}>
-              <div className="App">
-              </div>
-          </RouterProvider>
+      <RouterProvider router={router}>
+          <div className="App">
+          </div>
+      </RouterProvider>
   );
 }
 
