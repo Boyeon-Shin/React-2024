@@ -1,0 +1,8 @@
+.Header h1 {
+    margin-bottom: 0px;
+    color: pink;
+}
+.Header h2 {
+    text-align: center;
+    border: 1px solid black;
+}

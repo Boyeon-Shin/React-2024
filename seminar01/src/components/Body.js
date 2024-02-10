@@ -1,4 +1,5 @@
 import {useRef, useState} from "react";
+import {getFCP} from "web-vitals";
 
 function Body() {
     // const [email, setEmail] = useState("");
@@ -29,7 +30,7 @@ function Body() {
         if (state.email.length < 5 || state.password.length < 6 || !state.email.includes('@') || !state.email.includes('.com')) {
             textRef.current.focus();
             text2Ref.current.focus();
-            // state.change("입력값을 정확하게 입력하세요");
+            // state.change("입력값을 정확하게 입력하세요");,
             setState({ ...state, change: "입력값을 정확하게 입력하세요" });
             setTimeout(() => setState({ ...state, change: "" }), 2000);
             // setTimeout(() => state.change(""), 2000);
@@ -54,6 +55,7 @@ function Body() {
         //     <div style={{color: "red"}}> {change} </div>
         //     <div>{text}</div>
         // </div>
+
 
         <div style = {{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
         <form>
@@ -85,5 +87,4 @@ function Body() {
     );
 }
 
-export default Body;
-
+import React from 'react';

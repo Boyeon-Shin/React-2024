@@ -3,6 +3,8 @@ import Header from "./components/Header";
 import TodoEditor from "./components/TodoEditor";
 import TodoList from "./components/TodoList";
 import React, {useCallback, useMemo, useReducer, useRef} from "react";
+// import TestComp from "./components/TestComp";
+// import {tab} from "@testing-library/user-event/dist/tab";
 
 export const TodoStateContext = React.createContext();
 export const TodoDispatchContext = React.createContext();
@@ -85,11 +87,36 @@ function App() {
     }, []);
 
 
+    // const onCreate = (content) => {
+    //     const newItem = {
+    //         id: 0,
+    //         content,
+    //         isDone: false,
+    //         createDate: new Date().getTime(),
+    //     };
+    //     setTodo([newItem, ...todo]);
+    //     idRef.current += 1;
+    // };
+    // const onUpdate = (targetId) => {
+    //     setTodo(
+    //         todo.map((it) =>
+    //             it.id === targetId ? {...it, isDone: !it.isDone } :it
+    //         )
+    //     );
+    // };
+    //
+    // const onDelete = (targetId) => {
+    //     setTodo(todo.filter((it) => it.id !== targetId))
+    // };
+
     return (
         <div className="App">
+            {/*<TestComp />*/}
             <Header/>
             <TodoStateContext.Provider value={todo}>
                 <TodoDispatchContext.Provider value={memoizedDispatches}>
+                    {/*<TodoEditor onCreate = {onCreate} />*/}
+                    {/*<TodoList todo={todo} onUpdate={onUpdate} onDelete={onDelete} />*/}
                     <TodoEditor/>
                     <TodoList/>
                 </TodoDispatchContext.Provider>

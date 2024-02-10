@@ -1,0 +1,74 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  border: 3px solid black;
+  width: 500px;
+  height: 600px;
+  border-radius: 25px;
+  background-color: rgb(250, 244, 230);
+}
+.header {
+  border-bottom: 3px solid black;
+  height: 100px;
+  display: flex;
+  position: relative;
+}
+
+.btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-top: 5px;
+  border: 2px solid black;
+  margin-left: 10px;
+}
+#red_btn {
+  background-color: rgb(237, 122, 118);
+}
+
+.right {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  top: 5px;
+  right: 90px;
+}
+b {
+  margin-top: 5px;
+}
+.add {
+  background-color: rgb(241, 234, 216);
+  width: 200px;
+  height: 30px;
+  border-radius: 5px;
+  border: 2px solid black;
+  margin-top: 20px;
+}
+ul {
+  list-style: none;
+  margin-top: 50px;
+}
+li {
+  width: 450px;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 2px dashed gray;
+  margin-bottom: 15px;
+}
+
+.test {
+  display: flex;
+  flex-direction: column;
+}
+.todo_date {
+  color: gray;
+  margin-top: 5px;
+}
+i {
+  margin-right: 15px;
+}

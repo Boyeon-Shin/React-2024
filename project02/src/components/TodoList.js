@@ -48,6 +48,7 @@ const TodoList = () => {
 
             <div className="list_wrapper">
                 {getSearchResult().map((it) => (
+                    // <TodoItem key={it.id} {...it} onUpdate={onUpdate} onDelete={onDelete}/>
                     <TodoItem key={it.id} {...it} />
                 ))}
             </div>
