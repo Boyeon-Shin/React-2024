@@ -44,11 +44,10 @@ function App() {
       //     <Link to={"/diary"}>Diary</Link>
       //     <Link to={"/edit"}>Edit</Link>
       //   </div>
-
-      <RouterProvider router={router}>
-          <div className="App">
-          </div>
+      <div className="App">
+      <RouterProvider router={router} >
       </RouterProvider>
+      </div>
   );
 }
 
